@@ -1,4 +1,5 @@
 {
+  "ghcr.io/devcontainers/features/python:1": {"version": "3.10"},
   "name": "Leeds Agent Search",
   "image": "mcr.microsoft.com/devcontainers/python:3.10",
   "features": {
