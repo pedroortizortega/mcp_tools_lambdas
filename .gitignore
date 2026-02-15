@@ -8,6 +8,10 @@ wheels/
 
 # Virtual environments
 .venv
-
+uv.lock
 .claude
 .vscode
+
+# Environment variables (no subir claves)
+.env
+.env.local
