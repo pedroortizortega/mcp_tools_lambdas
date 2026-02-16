@@ -1,0 +1,29 @@
+services:
+  browser-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      # AWS credentials — use IAM role in production
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN:-}
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      # Bedrock model
+      - BEDROCK_MODEL_ID=${BEDROCK_MODEL_ID:-anthropic.claude-sonnet-4-20250514-v1:0}
+      - BEDROCK_MAX_TOKENS=${BEDROCK_MAX_TOKENS:-4096}
+      - BEDROCK_TEMPERATURE=${BEDROCK_TEMPERATURE:-0.3}
+      # Agent
+      - AGENT_MAX_ITERATIONS=${AGENT_MAX_ITERATIONS:-15}
+      # Browser
+      - BROWSER_HEADLESS=true
+      - BROWSER_VIEWPORT_WIDTH=1280
+      - BROWSER_VIEWPORT_HEIGHT=720
+      # Server
+      - HOST=0.0.0.0
+      - PORT=8081
+    restart: unless-stopped
+    # Shared memory needed by Chromium
+    shm_size: "2gb"
