@@ -1,8 +1,10 @@
+import logging
 import os
 import httpx
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 class BraveQuery:
     url = "https://api.search.brave.com/res/v1/web/search"
@@ -11,8 +13,9 @@ class BraveQuery:
     count = 20
 
     def __init__(self):
-        self.api_key = os.getenv("API_KEY_BRAVE", "")
-        print(f"k = {self.api_key}") # borrar
+        self.api_key = os.getenv("API_KEY_BRAVE")
+        if self.api_key is not None:
+            logging.info("API Brave Token agregado correctamente")
 
     @property
     def headers(self) -> dict:
