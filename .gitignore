@@ -13,5 +13,5 @@ uv.lock
 .vscode
 
 # Environment variables (no subir claves)
-.env
+.env*
 .env.local

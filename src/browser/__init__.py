@@ -17,6 +17,10 @@ from .utilities import (
     browser_file_upload,
 )
 from .install import browser_install
+from .config import BrowserOrchestratorConfig
+from .browser_controller import BrowserController
+from .bedrock_agent import BedrockAgent
+from .orchestrator import Orchestrator
 
 __all__ = [
     "browser_navigate",
@@ -41,4 +45,8 @@ __all__ = [
     "browser_handle_dialog",
     "browser_file_upload",
     "browser_install",
+    "BrowserOrchestratorConfig",
+    "BrowserController",
+    "BedrockAgent",
+    "Orchestrator",
 ]
